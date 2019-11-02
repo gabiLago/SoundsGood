@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LoginHeader extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
-  LoginHeader({this.controller});
+  LoginHeader(this.emailController, this.passwordController);
   
   @override
   Widget build(BuildContext context) {
@@ -14,12 +15,12 @@ class LoginHeader extends StatelessWidget {
           Text('Email'),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: LoginTextField(controller, 'johnandyoko@soundsgood.jp', false),
+            child: LoginTextField(emailController, 'johnandyoko@soundsgood.jp', false),
           ),
           Text('Password'),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: LoginTextField(controller, '******', true),
+            child: LoginTextField(passwordController, '******', true),
           )
         ],
       ),
