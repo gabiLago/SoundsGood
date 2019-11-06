@@ -3,6 +3,7 @@ import 'package:sounds_good/screens/widgets/profile_header.dart';
 import 'package:sounds_good/screens/widgets/profile_image.dart';
 import 'package:sounds_good/screens/widgets/profile_what.dart';
 import 'package:sounds_good/screens/widgets/profile_how.dart';
+import 'package:sounds_good/screens/widgets/profile_videos.dart';
 import 'package:sounds_good/screens/widgets/profile_about_me.dart';
 
 class ProfileView extends StatefulWidget {
@@ -11,6 +12,7 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,9 @@ class _ProfileViewState extends State<ProfileView> {
       ProfileImage(),
       ProfileWhat(),
       ProfileHow(),
+      ProfileVideos(),
       ProfileAboutMe(),
+     
     ])));
   }
 }
