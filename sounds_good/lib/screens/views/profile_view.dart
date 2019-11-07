@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sounds_good/screens/widgets/profile_header.dart';
 import 'package:sounds_good/screens/widgets/profile_image.dart';
+import 'package:sounds_good/screens/widgets/profile_title.dart';
 import 'package:sounds_good/screens/widgets/profile_what.dart';
 import 'package:sounds_good/screens/widgets/profile_how.dart';
 import 'package:sounds_good/screens/widgets/profile_videos.dart';
@@ -21,9 +22,11 @@ class _ProfileViewState extends State<ProfileView> {
                 ListView(padding: const EdgeInsets.all(24), children: <Widget>[
       ProfileHeader(),
       ProfileImage(),
+      ProfileTitle('What can I play'),
       ProfileWhat(),
-      ProfileHow(),
+      ProfileTitle('How do I play?'),
       ProfileVideos(),
+      ProfileTitle('About Me'),
       ProfileAboutMe(),
       ProfileCloseButton('Close Session'),
     ])));
