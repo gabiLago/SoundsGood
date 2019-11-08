@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'store.dart';
 
 class Api {
-  static const endpoint = 'http://ec2-52-87-34-66.compute-1.amazonaws.com';
+  static const endpoint = 'http://192.168.43.213';
 
   var client = http.Client();
 

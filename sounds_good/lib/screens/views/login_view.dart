@@ -3,8 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:sounds_good/locator.dart';
 import 'package:sounds_good/models/login_model.dart';
 import 'package:sounds_good/screens/widgets/login_header.dart';
-import 'package:sounds_good/services/store.dart';
-
 class LoginView extends StatefulWidget {
   @override
   _LoginViewState createState() => _LoginViewState();

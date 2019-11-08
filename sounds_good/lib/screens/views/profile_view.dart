@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sounds_good/screens/widgets/profile_header.dart';
-import 'package:sounds_good/screens/widgets/profile_image.dart';
-import 'package:sounds_good/screens/widgets/profile_title.dart';
-import 'package:sounds_good/screens/widgets/profile_what.dart';
-import 'package:sounds_good/screens/widgets/profile_how.dart';
-import 'package:sounds_good/screens/widgets/profile_videos.dart';
-import 'package:sounds_good/screens/widgets/profile_about_me.dart';
-import 'package:sounds_good/screens/widgets/profile_close_button.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_header.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_image.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_title.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_what.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_videos.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_about_me.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_close_button.dart';
 
 class ProfileView extends StatefulWidget {
   @override

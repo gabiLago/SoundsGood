@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sounds_good/screens/widgets/profile_instrument.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_instrument.dart';
 
 class ProfileWhat extends StatelessWidget {
   @override
