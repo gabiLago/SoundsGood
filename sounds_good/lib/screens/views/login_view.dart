@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sounds_good/locator.dart';
-import 'package:sounds_good/models/login_model.dart';
+import 'package:sounds_good/core/viewmodels/login_model.dart';
 import 'package:sounds_good/screens/widgets/login_header.dart';
+
 class LoginView extends StatefulWidget {
   @override
   _LoginViewState createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<LoginView> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController(text: "cocoataster@gmail.com");
+  final TextEditingController passwordController = TextEditingController(text: "soundsgood");
 
   void _handleLogin(LoginModel model) async {
     var loginSuccess = await model.login(emailController.text, passwordController.text);
 
     if (loginSuccess) {
-      Navigator.pushNamed(context, '/');
+      Navigator.pushNamed(context, 'profile');
     }
 
     return;

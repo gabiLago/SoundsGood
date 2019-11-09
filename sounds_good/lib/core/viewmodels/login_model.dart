@@ -1,7 +1,7 @@
-import 'package:sounds_good/models/base_mode.dart';
+import 'package:sounds_good/core/viewmodels/base_model.dart';
 
 import 'package:sounds_good/locator.dart';
-import 'package:sounds_good/services/authentication_service.dart';
+import 'package:sounds_good/core/services/authentication_service.dart';
 
 class LoginModel extends BaseModel {
   final AuthenticationService _authenticationService = locator<AuthenticationService>();

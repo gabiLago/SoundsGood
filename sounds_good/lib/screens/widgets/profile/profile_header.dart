@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
+  final String name;
+
+  ProfileHeader({this.name});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +15,7 @@ class ProfileHeader extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Jordan Ntolo',
+                Text(name,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,

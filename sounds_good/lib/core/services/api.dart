@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import 'package:sounds_good/core/models/profile.dart';
 import 'store.dart';
 
 class Api {
-  static const endpoint = 'http://192.168.43.213';
+  static const endpoint = 'http://ec2-52-87-34-66.compute-1.amazonaws.com';
 
   var client = http.Client();
 
@@ -38,21 +41,25 @@ class Api {
     }
   }
 
-  Future<bool> getProfile() async {
+  // Profile
+
+  Future<Profile> getProfile() async {
     String token = await Storage.getToken();
 
     var headers = {
       "Authorization": token
     };
 
-    var response = await client.post('$endpoint/profile', headers: headers);
+    final response = await client.patch('$endpoint/profile', headers: headers);
 
     switch (response.statusCode) {
       case 200:
-        // Change bool for Profile model
-        return true;
+        var json = jsonDecode(response.body);
+        print(json);
+
+        return Profile.fromJson(json);
       default:
-        return false;
+        return Profile();
     }
   }
 
