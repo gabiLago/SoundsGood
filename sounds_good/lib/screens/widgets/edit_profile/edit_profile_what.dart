@@ -9,21 +9,20 @@ class ProfileWhat extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+           Wrap(
               children: <Widget>[
                 Container(
-                    child: Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(0, 8.0, 0, 4.0),
-                        child: IconButton(
+                    child: IconButton(
                           icon: Icon(Icons.add_circle),
                           onPressed: () => {},
                           iconSize: 30.0,
                           color: Colors.deepPurple,
                             
-                          ))),
+                          )),
                 ProfileInstrument(instrument: 'Guitar'),
                 ProfileInstrument(instrument: 'Bass'),
+                ProfileInstrument(instrument: 'Hammond'),
+                ProfileInstrument(instrument: 'Hammond'),
                 ProfileInstrument(instrument: 'Hammond'),
               ],
             )
