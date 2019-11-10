@@ -11,8 +11,20 @@ class ProfileWhat extends StatelessWidget {
           children: [
             Row(
               children: <Widget>[
+                Container(
+                    child: Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(0, 8.0, 0, 4.0),
+                        child: IconButton(
+                          icon: Icon(Icons.add_circle),
+                          onPressed: () => {},
+                          iconSize: 30.0,
+                          color: Colors.deepPurple,
+                            
+                          ))),
                 ProfileInstrument(instrument: 'Guitar'),
                 ProfileInstrument(instrument: 'Bass'),
+                ProfileInstrument(instrument: 'Hammond'),
               ],
             )
           ],
