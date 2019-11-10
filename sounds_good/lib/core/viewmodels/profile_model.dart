@@ -15,4 +15,10 @@ class ProfileModel extends BaseModel {
     profile = await _api.getProfile();
     setState(ViewState.Idle);
   }
+
+  Future updateProfile() async {
+    setState(ViewState.Busy);
+    profile = await _api.updateProfile();
+    setState(ViewState.Idle);
+  }
 }

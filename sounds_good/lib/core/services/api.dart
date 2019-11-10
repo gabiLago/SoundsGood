@@ -63,6 +63,17 @@ class Api {
     }
   }
 
+  Future<Profile> updateProfile() async {
+    String token = await Storage.getToken();
+
+    var headers = {
+      "Authorization": token
+    };
+
+    final response = await client.patch('$endpoint/profile', headers: headers);
+
+  }
+
   Future<bool> getProfileWithId(String id) async {
     String token = await Storage.getToken();
 
