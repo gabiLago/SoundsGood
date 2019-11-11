@@ -4,7 +4,7 @@ class ProfileAboutMe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 10.0, bottom: 30.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

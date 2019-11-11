@@ -9,7 +9,10 @@ class ProfileCloseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
         onPressed: () {},
-        child: Text(this.buttonValue ?? 'button', style: TextStyle(fontSize: 18)));
-
+        child: Text(this.buttonValue ?? 'button', style: TextStyle(fontSize: 18)),
+        shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0),
+                          )
+        );
   }
 }

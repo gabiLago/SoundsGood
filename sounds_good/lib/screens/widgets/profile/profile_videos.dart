@@ -7,7 +7,7 @@ class ProfileVideos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 14.0),
+      padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
       height: MediaQuery.of(context).size.height * 0.20,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,

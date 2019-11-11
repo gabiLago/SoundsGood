@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sounds_good/core/viewmodels/profile_model.dart';
 
 class EditProfileHeader extends StatelessWidget {
-  
   final TextEditingController nameController;
   final TextEditingController cityController;
 
@@ -38,14 +37,16 @@ class NameTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        color: Colors.blueGrey,
+      ),
       maxLines: 1,
       decoration: InputDecoration(
+        isDense: true,
         contentPadding: EdgeInsets.all(0.0),
         hintText: hintText,
-        hintStyle: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-        ),
       ),
       controller: controller,
     );
@@ -61,11 +62,17 @@ class CityTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: TextStyle(
+        color: Colors.blueGrey,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
       decoration: InputDecoration(
+        isDense: true,
         contentPadding: EdgeInsets.all(0.0),
         hintText: hintText,
         hintStyle: TextStyle(
-          fontSize: 14,
+          fontSize: 24,
           fontWeight: FontWeight.w400,
           height: 1,
         ),
