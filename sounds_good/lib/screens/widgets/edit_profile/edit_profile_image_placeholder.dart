@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 
 class ProfileImage extends StatefulWidget {
   File _pickedImage;
@@ -14,7 +14,7 @@ class _ProfileImageState extends State<ProfileImage> {
   
 
   
-
+/*
   Future getImage() async {
    final imageSource = await showDialog<ImageSource>(
       context: context,
@@ -40,7 +40,7 @@ class _ProfileImageState extends State<ProfileImage> {
       setState(() => widget._pickedImage = file);
     }
   }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _ProfileImageState extends State<ProfileImage> {
               Icons.add_circle,),
               color: Colors.blueGrey.shade100,              
               iconSize: 80.0,
-              onPressed: getImage,
+             // onPressed: getImage,
 
               ),
               ),

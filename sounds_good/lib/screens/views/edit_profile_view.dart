@@ -12,7 +12,7 @@ import 'package:sounds_good/screens/widgets/profile/profile_close_button.dart';
 
 import 'dart:async';
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 
 class EditProfileView extends StatefulWidget {
   @override
