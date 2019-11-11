@@ -49,9 +49,29 @@ class _EditProfileViewState extends State<EditProfileView> {
                     child: ListView(
                         padding: const EdgeInsets.all(24),
                         children: <Widget>[
-                  EditProfileHeader(
-                    nameController: this.nameController,
-                    cityController: this.cityController,
+                  Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: RawMaterialButton(
+                          padding: EdgeInsets.all(0),
+                          fillColor: Colors.white,
+                          elevation: 4,
+                          shape: CircleBorder(),
+                          child: Icon(
+                            Icons.close,
+                            color: Colors.black,
+                            semanticLabel: 'Close Screen',
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                      EditProfileHeader(
+                        nameController: this.nameController,
+                        cityController: this.cityController,
+                      ),
+                    ],
                   ),
                   ProfileImage(_pickedImage),
                   ProfileTitle('What can I play'),
@@ -65,8 +85,8 @@ class _EditProfileViewState extends State<EditProfileView> {
                       color: Colors.red.shade400,
                       child: Text('Accept', style: TextStyle(fontSize: 18)),
                       shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(10.0),
-                          )),
+                        borderRadius: new BorderRadius.circular(10.0),
+                      )),
                   ProfileCloseButton('Close'),
                 ]))));
   }

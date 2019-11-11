@@ -43,9 +43,9 @@ class NameTextField extends StatelessWidget {
         color: Colors.blueGrey,
       ),
       maxLines: 1,
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding: EdgeInsets.all(0.0),
+      decoration: InputDecoration.collapsed(
+        //isDense: true,
+        //contentPadding: EdgeInsets.all(0.0),
         hintText: hintText,
       ),
       controller: controller,
@@ -67,9 +67,9 @@ class CityTextField extends StatelessWidget {
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding: EdgeInsets.all(0.0),
+      decoration: InputDecoration.collapsed(
+        //isDense: true,
+        //contentPadding: EdgeInsets.all(0.0),
         hintText: hintText,
         hintStyle: TextStyle(
           fontSize: 24,
