@@ -7,12 +7,7 @@ class ProfileInstrument extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Padding(
-            padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-            
-            child: Container(
-              width: 130,
+    return Container(
                 child: Padding(
                     padding: const EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 5.0),
                     child: Text(
@@ -20,6 +15,6 @@ class ProfileInstrument extends StatelessWidget {
                         style: TextStyle(color: Colors.white))),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(const Radius.circular(15.0)),
-                    color: Colors.deepPurple))));
+                    color: Colors.deepPurple));
   }
 }

@@ -10,6 +10,10 @@ import 'package:sounds_good/screens/widgets/profile/profile_videos.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_about_me.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_close_button.dart';
 
+import 'dart:async';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+
 class EditProfileView extends StatefulWidget {
   @override
   _EditProfileViewState createState() => _EditProfileViewState();
@@ -20,6 +24,10 @@ class _EditProfileViewState extends State<EditProfileView> {
       TextEditingController(text: "Eric");
   final TextEditingController cityController =
       TextEditingController(text: "Barcelona");
+
+   File _pickedImage;
+
+  
 
   @override
   void _handleEdit() {
@@ -53,7 +61,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                     nameController: this.nameController,
                     cityController: this.cityController,
                   ),
-                  ProfileImage(),
+                  ProfileImage(_pickedImage),
                   ProfileTitle('What can I play'),
                   ProfileWhat(),
                   ProfileTitle('How do I play?'),
