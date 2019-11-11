@@ -4,7 +4,7 @@ import 'package:sounds_good/screens/views/base_view.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_header.dart';
 import 'package:sounds_good/screens/widgets/edit_profile/edit_profile_header.dart';
 import 'package:sounds_good/screens/widgets/edit_profile/edit_profile_image_placeholder.dart';
-import 'package:sounds_good/screens/widgets/profile/profile_title.dart';
+import 'package:sounds_good/screens/widgets/edit_profile/edit_profile_title.dart';
 import 'package:sounds_good/screens/widgets/edit_profile/edit_profile_what.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_videos.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_about_me.dart';
@@ -12,7 +12,7 @@ import 'package:sounds_good/screens/widgets/profile/profile_close_button.dart';
 
 import 'dart:async';
 import 'dart:io';
-//import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfileView extends StatefulWidget {
   @override

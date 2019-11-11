@@ -8,13 +8,6 @@ class ProfileWhat extends StatelessWidget {
       spacing: 8.0, // gap between adjacent chips
       runSpacing: 4.0, // gap between lines
       children: <Widget>[
-        IconButton(
-          alignment: Alignment.center,
-          icon: Icon(Icons.add_circle),
-          onPressed: () => {},
-          iconSize: 30.0,
-          color: Colors.deepPurple,
-        ),
         ProfileInstrument(instrument: 'Guitar'),
         ProfileInstrument(instrument: 'Bass'),
         ProfileInstrument(instrument: 'Violin'),
