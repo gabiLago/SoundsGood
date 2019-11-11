@@ -25,9 +25,7 @@ class _EditProfileViewState extends State<EditProfileView> {
   final TextEditingController cityController =
       TextEditingController(text: "Barcelona");
 
-   File _pickedImage;
-
-  
+  File _pickedImage;
 
   @override
   void _handleEdit() {
@@ -47,16 +45,10 @@ class _EditProfileViewState extends State<EditProfileView> {
           model.getProfile();
         },
         builder: (context, model, child) => Scaffold(
-            floatingActionButton: FloatingActionButton.extended(
-              icon: Icon(Icons.save),
-              backgroundColor: Colors.red.shade400,
-              label: Text('Save'),
-              onPressed: () => _handleEdit(),
-            ),
-            body: SafeArea(
-                child: ListView(
-                    padding: const EdgeInsets.all(24),
-                    children: <Widget>[
+                body: SafeArea(
+                    child: ListView(
+                        padding: const EdgeInsets.all(24),
+                        children: <Widget>[
                   EditProfileHeader(
                     nameController: this.nameController,
                     cityController: this.cityController,
@@ -68,7 +60,16 @@ class _EditProfileViewState extends State<EditProfileView> {
                   ProfileVideos(),
                   ProfileTitle('About Me'),
                   ProfileAboutMe(),
-                  ProfileCloseButton('Close Session'),
+            
+                          RaisedButton(
+                            
+                            onPressed: () => _handleEdit(),
+                            color: Colors.red.shade400,
+                            child:
+                                Text('Accept', style: TextStyle(fontSize: 18)),
+                          ),
+            
+                  ProfileCloseButton('Close'),
                 ]))));
   }
 }

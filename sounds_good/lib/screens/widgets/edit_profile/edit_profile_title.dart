@@ -7,12 +7,16 @@ class ProfileTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-          title: Text(txt,
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-              )),
-          trailing: Icon(Icons.add_circle),
-        );
+      contentPadding: EdgeInsets.all(0),
+      title: Text(txt,
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
+          )),
+      trailing: Icon(
+        Icons.add_circle_outline,
+        color: Colors.blueGrey.shade200,
+      ),
+    );
   }
 }

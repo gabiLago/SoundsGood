@@ -12,6 +12,7 @@ class ProfileWhat extends StatelessWidget {
         ProfileInstrument(instrument: 'Bass'),
         ProfileInstrument(instrument: 'Violin'),
         ProfileInstrument(instrument: 'Viola'),
+        ProfileInstrument(instrument: 'Trumpet'),
         ProfileInstrument(instrument: 'Double Bass'),
       ],
     );
