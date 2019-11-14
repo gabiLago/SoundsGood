@@ -41,31 +41,33 @@ class _EditProfileViewState extends State<EditProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ListView(
-        padding: const EdgeInsets.all(24),
-        children: <Widget>[
-          Stack(
-            children: <Widget>[
-              EditProfileHeader(
-                nameController: this.nameController,
-                cityController: this.cityController,
-              ),
-            ],
-          ),
-          ProfileImage(_pickedImage),
-          ProfileTitle('How to Reach Me'),
-          ReachMeSelector(),
-          ProfileTitle('What can I play'),
-          ProfileWhat(),
-          AddInstrument(),
-          ProfileTitle('How do I play?'),
-          ProfileVideos(),
-          ProfileTitle('About Me'),
-          ProfileAboutMe(aboutMeController: this.aboutMeController),
-          ButtonAcceptEdit(onPressed: _handleEdit),
-          ProfileCloseButton('Cancel'),
-        ],
+    return Scaffold(
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(24),
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                EditProfileHeader(
+                  nameController: this.nameController,
+                  cityController: this.cityController,
+                ),
+              ],
+            ),
+            ProfileImage(_pickedImage),
+            ProfileTitle('How to Reach Me'),
+            ReachMeSelector(),
+            ProfileTitle('What can I play'),
+            ProfileWhat(),
+            AddInstrument(),
+            ProfileTitle('How do I play?'),
+            ProfileVideos(),
+            ProfileTitle('About Me'),
+            ProfileAboutMe(aboutMeController: this.aboutMeController),
+            ButtonAcceptEdit(onPressed: _handleEdit),
+            ProfileCloseButton('Cancel'),
+          ],
+        ),
       ),
     );
   }
