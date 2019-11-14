@@ -36,20 +36,22 @@ class NameTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w700,
-        color: Colors.blueGrey,
-      ),
-      maxLines: 1,
-      decoration: InputDecoration.collapsed(
-        //isDense: true,
-        //contentPadding: EdgeInsets.all(0.0),
-        hintText: hintText,
-      ),
-      controller: controller,
-    );
+    return Container(
+        width: 300.0,
+        child: TextField(
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Colors.blueGrey,
+          ),
+          maxLines: 1,
+          decoration: InputDecoration.collapsed(
+            //isDense: true,
+            //contentPadding: EdgeInsets.all(0.0),
+            hintText: hintText,
+          ),
+          controller: controller,
+        ));
   }
 }
 

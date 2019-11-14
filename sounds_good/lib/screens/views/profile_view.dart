@@ -41,19 +41,5 @@ class _ProfileViewState extends State<ProfileView> {
                 ProfileAboutMe(),
                 ProfileCloseButton('Close Session'),
               ]))));
-    return Scaffold(
-        body: SafeArea(
-            child:
-                ListView(padding: const EdgeInsets.all(24), children: <Widget>[
-      ProfileHeader(),
-      ProfileImage(),
-      ProfileTitle('What can I play'),
-      ProfileWhat(),
-      ProfileTitle('How do I play?'),
-      ProfileVideos(),
-      ProfileTitle('About Me'),
-      ProfileAboutMe(),
-      ProfileCloseButton('Close Session'),
-    ])));
   }
 }

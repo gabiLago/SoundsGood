@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class AddInstrument extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Padding(
+    return Row(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(top: 5.0),
+          child: Padding(
             padding: const EdgeInsets.fromLTRB(16.0, 2.5, 16.0, 2.5),
             child: SizedBox(
               height: 16.0,
@@ -16,11 +19,15 @@ class AddInstrument extends StatelessWidget {
                 iconSize: 16,
                 color: Colors.blueGrey.shade200,
               ),
-            )),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(const Radius.circular(15.0)),
-          color: Colors.white,
-          border: Border.all(color: Colors.blueGrey.shade200, width: 2.0),
-        ));
+            ),
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(const Radius.circular(15.0)),
+            color: Colors.white,
+            border: Border.all(color: Colors.blueGrey.shade200, width: 2.0),
+          ),
+        ),
+      ],
+    );
   }
 }
