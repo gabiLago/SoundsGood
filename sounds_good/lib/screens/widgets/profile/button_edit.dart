@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ButtonDismiss extends StatelessWidget {
+class ButtonEdit extends StatelessWidget {
     final VoidCallback onPressed;
 
-    ButtonDismiss({this.onPressed});
+    ButtonEdit({this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ButtonDismiss extends StatelessWidget {
           elevation: 4,
           shape: CircleBorder(),
           child: Icon(
-            Icons.close,
+            Icons.edit,
             color: Colors.black,
             semanticLabel: 'Close Screen',
           ),

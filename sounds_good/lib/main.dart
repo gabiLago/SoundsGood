@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Sounds Good',
       theme: ThemeData(),
-      initialRoute: 'edit_profile',
+      initialRoute: 'profile',
       onGenerateRoute: Router.generateRoute,
     );
   }

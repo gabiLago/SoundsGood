@@ -10,7 +10,6 @@ import 'package:sounds_good/screens/widgets/edit_profile/add_instrument.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_videos.dart';
 import 'package:sounds_good/screens/widgets/edit_profile/edit_profile_about_me.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_close_button.dart';
-import 'package:sounds_good/screens/widgets/profile/button_dismiss.dart';
 import 'package:sounds_good/screens/widgets/edit_profile/button_accept_edit.dart';
 
 import 'dart:async';
@@ -27,8 +26,9 @@ class _EditProfileViewState extends State<EditProfileView> {
       TextEditingController(text: "Eric");
   final TextEditingController cityController =
       TextEditingController(text: "Barcelona");
-  final TextEditingController aboutMeController =
-      TextEditingController(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur purus a aliquam luctus. In vitae imperdiet lectus. Nunc a ante eget dui luctus euismod. Ut ultricies mauris vitae sagittis mollis. Aliquam porta venenatis egestas. Vivamus et orci sed tortor varius tempor. Nulla facilisi. Vestibulum a sapien neque. Mauris ac magna dui. Cras ultricies velit sit amet turpis ultrices, sed finibus urna suscipit. Nulla eget blandit nunc, sit amet dictum nibh. Nam sed orci quis ipsum laoreet commodo at vitae sapien. Integer eget lacus porttitor, ultrices urna quis, laoreet enim. In vitae lectus et libero pulvinar varius eget in magna.");
+  final TextEditingController aboutMeController = TextEditingController(
+      text:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur purus a aliquam luctus. In vitae imperdiet lectus. Nunc a ante eget dui luctus euismod. Ut ultricies mauris vitae sagittis mollis. Aliquam porta venenatis egestas. Vivamus et orci sed tortor varius tempor. Nulla facilisi. Vestibulum a sapien neque. Mauris ac magna dui. Cras ultricies velit sit amet turpis ultrices, sed finibus urna suscipit. Nulla eget blandit nunc, sit amet dictum nibh. Nam sed orci quis ipsum laoreet commodo at vitae sapien. Integer eget lacus porttitor, ultrices urna quis, laoreet enim. In vitae lectus et libero pulvinar varius eget in magna.");
 
   File _pickedImage;
 
@@ -39,47 +39,34 @@ class _EditProfileViewState extends State<EditProfileView> {
     print('About Me: ' + aboutMeController.text);
   }
 
-  void _dismiss() {
-    print('Dismiss Tapped');
-  }
-
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return BaseView<ProfileModel>(
-        onModelReady: (model) {
-          model.getProfile();
-        },
-        builder: (context, model, child) => Scaffold(
-                body: SafeArea(
-                    child: ListView(
-                        padding: const EdgeInsets.all(24),
-                        children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      ButtonDismiss(onPressed: _dismiss),
-                      EditProfileHeader(
-                        nameController: this.nameController,
-                        cityController: this.cityController,
-                      ),
-                    ],
-                  ),
-                  ProfileImage(_pickedImage),
-                  ProfileTitle('How to Reach Me'),
-                  ReachMeSelector(),
-                  ProfileTitle('What can I play'),
-                  ProfileWhat(),
-                  AddInstrument(),
-                  ProfileTitle('How do I play?'),
-                  ProfileVideos(),
-                  ProfileTitle('About Me'),
-                  ProfileAboutMe(aboutMeController: this.aboutMeController),
-                  ButtonAcceptEdit(onPressed: _handleEdit),
-                  ProfileCloseButton('Cancel'),
-                ]))));
+    return SafeArea(
+      child: ListView(
+        padding: const EdgeInsets.all(24),
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              EditProfileHeader(
+                nameController: this.nameController,
+                cityController: this.cityController,
+              ),
+            ],
+          ),
+          ProfileImage(_pickedImage),
+          ProfileTitle('How to Reach Me'),
+          ReachMeSelector(),
+          ProfileTitle('What can I play'),
+          ProfileWhat(),
+          AddInstrument(),
+          ProfileTitle('How do I play?'),
+          ProfileVideos(),
+          ProfileTitle('About Me'),
+          ProfileAboutMe(aboutMeController: this.aboutMeController),
+          ButtonAcceptEdit(onPressed: _handleEdit),
+          ProfileCloseButton('Cancel'),
+        ],
+      ),
+    );
   }
 }

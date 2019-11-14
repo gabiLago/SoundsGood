@@ -28,21 +28,6 @@ class ProfileHeader extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-              flex: 1, // 10%
-              child: Container(
-                child: RawMaterialButton(
-                  fillColor: Colors.white,
-                  elevation: 4,
-                  shape: CircleBorder(),
-                  child: Icon(
-                    Icons.edit,
-                    color: Colors.black,
-                    semanticLabel: 'Edit Profile',
-                  ),
-                  onPressed: () {},
-                ),
-              )),
         ],
       ),
     );
