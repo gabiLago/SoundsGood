@@ -34,9 +34,14 @@ class _EditProfileViewState extends State<EditProfileView> {
 
   @override
   void _handleEdit() {
-    print('name: ' + nameController.text);
+    /*print('name: ' + nameController.text);
     print('city: ' + cityController.text);
-    print('About Me: ' + aboutMeController.text);
+    print('About Me: ' + aboutMeController.text);*/
+    print('handle edit');
+  }
+
+  void _cancel() {
+    Navigator.pop(context);
   }
 
   @override
@@ -65,7 +70,7 @@ class _EditProfileViewState extends State<EditProfileView> {
             ProfileTitle('About Me'),
             ProfileAboutMe(aboutMeController: this.aboutMeController),
             ButtonAcceptEdit(onPressed: _handleEdit),
-            ProfileCloseButton('Cancel'),
+            ProfileCloseButton(value: 'Cancel', onPressed: _cancel),
           ],
         ),
       ),

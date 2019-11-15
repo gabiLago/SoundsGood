@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ProfileCloseButton extends StatelessWidget {
-  final String buttonValue;
+  final String value;
+  final VoidCallback onPressed; 
 
-  ProfileCloseButton(this.buttonValue);
+  ProfileCloseButton({this.value, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-        onPressed: () {},
-        child: Text(this.buttonValue ?? 'button', style: TextStyle(fontSize: 18)),
+        onPressed: onPressed,
+        child: Text(this.value ?? 'button', style: TextStyle(fontSize: 18)),
         shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           )

@@ -1,58 +1,60 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ReachMeSelector extends StatelessWidget {
-  bool isSwitched = true;
+class ReachMeSelector extends StatefulWidget {
+  @override
+  _ReachMeSelectorState createState() => _ReachMeSelectorState();
+}
+
+class _ReachMeSelectorState extends State<ReachMeSelector> {
+  final Map<int, Widget> logoWidgets = const <int, Widget>{
+    0: Text('Mail'),
+    1: Text('WhatsApp'),
+  };
+
+  int sharedValue = 0;
+
   @override
   Widget build(BuildContext context) {
-    return /*SizedBox(
-      width: 100.0,
-       child: const DecoratedBox(
-      decoration: BoxDecoration(
-        color: Colors.black,
-      )
-      child: Row(
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Mail'),
-          Switch(
-            value: isSwitched,
-            onChanged: (value) => {},
-            activeTrackColor: Colors.lightGreenAccent,
-            activeColor: Colors.green,
-          ),
-          Text('WhatsApp'),
-        ],
-      ),
-      ),
-    );*/
-        Row(
-      children: <Widget>[
-        Container(
-          child: SizedBox(
-            width: 160.0,
-            height: 20.0,
-            
-            child: Row(
-              
-              children: <Widget>[
-                Text('Mail'),
-                Switch( 
-                  value: isSwitched,
-                  onChanged: (value) => {},
-                  activeTrackColor: Colors.blueGrey.shade100,
-                  activeColor: Colors.blueGrey,
-                ),
-                Text('WhatsApp'),
-              ],
+          SizedBox(
+            height: 50.0,
+            width: 180.0,
+            child: CupertinoSegmentedControl<int>(
+              padding: EdgeInsets.all(0.0),
+              borderColor: Colors.blueGrey,
+              selectedColor: Colors.blueGrey,
+              children: logoWidgets,
+              onValueChanged: (int val) {
+                setState(() {
+                  sharedValue = val;
+                });
+              },
+              groupValue: sharedValue,
             ),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(const Radius.circular(15.0)),
-            color: Colors.white,
-            border: Border.all(color: Colors.blueGrey.shade200, width: 2.0),
+          SizedBox(
+            width: 180.0,
+            height: 32.0,
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 0),
+               hintText: 'Add your email address:',
+               hintStyle: TextStyle(fontSize: 14.0),
+                border: new OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                    const Radius.circular(5.0),
+                  ),
+                ),
+              ),
+            ),
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }

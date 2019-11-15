@@ -29,6 +29,9 @@ class _ProfileViewState extends State<ProfileView> {
 
   }
 
+  void _close() {
+    print('Close');
+  }
   @override
   Widget build(BuildContext context) {
     return BaseView<ProfileModel>(
@@ -55,7 +58,7 @@ class _ProfileViewState extends State<ProfileView> {
                 ProfileVideos(),
                 ProfileTitle('About Me'),
                 ProfileAboutMe(),
-                ProfileCloseButton('Close Session'),
+                ProfileCloseButton(value: 'Close Session', onPressed: _close),
               ]))));
   }
 }
