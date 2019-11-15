@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sounds_good/screens/widgets/instruments/instrument.dart';
 
-class InstrumentItem extends StatelessWidget {
+class EditInstrumentItem extends StatelessWidget {
   final Instrument instrument;
   final bool isSelected;
   final InstrumentsListCallback onListChanged;
 
-  InstrumentItem({Instrument instrument, this.isSelected, this.onListChanged})
+  EditInstrumentItem({Instrument instrument, this.isSelected, this.onListChanged})
       : instrument = instrument,
         super(key: ObjectKey(instrument));
 

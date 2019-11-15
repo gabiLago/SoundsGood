@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:sounds_good/screens/widgets/instruments/instrument.dart';
 import 'package:sounds_good/screens/widgets/instruments/instrument_item_edit.dart';
 
-class InstrumentsList extends StatefulWidget {
-  InstrumentsList({Key key, this.instruments}) : super(key: key);
+class EditInstrumentsList extends StatefulWidget {
+  EditInstrumentsList({Key key, this.instruments}) : super(key: key);
 
   final List<Instrument> instruments;
 
   @override
-  _InstrumentsListState createState() => _InstrumentsListState();
+  _EditInstrumentsListState createState() => _EditInstrumentsListState();
 }
 
 
-class _InstrumentsListState extends State<InstrumentsList> {
-  Set<Instrument> _instrumentsList = Set<Instrument>();
+class _EditInstrumentsListState extends State<EditInstrumentsList> {
+  Set<Instrument> _EditInstrumentsList = Set<Instrument>();
   
   void _handleInstrumentChanged(Instrument instrument, bool isSelected) {
     setState(() {
       if (!isSelected) {
-        _instrumentsList.add(instrument);
+        _EditInstrumentsList.add(instrument);
       } else {
-        _instrumentsList.remove(instrument);
+        _EditInstrumentsList.remove(instrument);
       }
     });
   }
@@ -34,9 +34,9 @@ class _InstrumentsListState extends State<InstrumentsList> {
       spacing: 8.0,
       runSpacing: 4.0,
       children: widget.instruments.map((Instrument instrument) {
-        return InstrumentItem(
+        return EditInstrumentItem(
           instrument: instrument,
-          isSelected: _instrumentsList.contains(instrument),
+          isSelected: _EditInstrumentsList.contains(instrument),
           onListChanged: _handleInstrumentChanged,
         );
       }).toList(),
