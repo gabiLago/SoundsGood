@@ -47,7 +47,7 @@ class Profile {
     return Profile(
         id: json['cuid'],
         name: json['name'],
-        location: Location.fromJson(json['location']),
+        location: location,
         contactMethod: contactMethod,
         instruments: instrumentsList,
         friendlyLocation: json['friendlyLocation'],
