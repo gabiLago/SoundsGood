@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sounds_good/core/viewmodels/profile_model.dart';
 import 'package:sounds_good/screens/views/base_view.dart';
-import 'package:sounds_good/screens/widgets/edit_profile/edit_profile_what.dart';
+
+import 'package:sounds_good/screens/widgets/profile/shared/profile_modes.dart';
+import 'package:sounds_good/screens/widgets/profile/edit/edit_profile_what.dart';
 import 'package:sounds_good/screens/widgets/profile/shared/profile_image.dart';
 import 'package:sounds_good/screens/widgets/profile/edit/profile_image.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_title.dart';
@@ -10,11 +12,10 @@ import 'package:sounds_good/screens/widgets/profile/profile_videos.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_about_me.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_close_button.dart';
 import 'package:sounds_good/screens/widgets/profile/shared/header_button.dart';
-import 'package:sounds_good/screens/widgets/profile/shared/header_blank_button.dart';
-import 'package:sounds_good/screens/widgets/profile/profile_modes.dart';
 import 'package:sounds_good/screens/widgets/profile/own/header.dart';
 import 'package:sounds_good/screens/widgets/profile/edit/header.dart';
-import 'package:sounds_good/screens/widgets/edit_profile/button_accept_edit.dart';
+import 'package:sounds_good/screens/widgets/profile/edit/how_to_reach_me.dart';
+import 'package:sounds_good/screens/widgets/profile/edit/button_accept_edit.dart';
 
 import 'dart:io';
 
@@ -51,6 +52,7 @@ class _ProfileViewState extends State<ProfileView> {
                 ],
               ),
               _profileImageSwitcher(),
+              _profileEditHowReachMe(),
               ProfileTitle('What can I play'),
               _profileInstrumentsListSwitcher(),
               ProfileTitle('How do I play?'),
@@ -114,6 +116,27 @@ class _ProfileViewState extends State<ProfileView> {
     }
   }
 
+  Widget _profileEditHowReachMe(){
+            switch (_mode) {
+      case profileMode.edit:
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            ProfileTitle('How to Reach Me'),
+            ReachMeSelector(),
+          ]
+        );
+        
+        break;
+
+      default:
+        return Container();
+        break;
+    }
+            
+
+  }
   Widget _profileInstrumentsListSwitcher() {
     switch (_mode) {
       case profileMode.edit:
@@ -127,13 +150,33 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Widget _profileBottomButtons() {
+    double width = MediaQuery.of(context).size.width - 50.0;
+
     switch (_mode) {
       case profileMode.edit:
-        return Column(
-          children: <Widget>[
-            ButtonAcceptEdit(onPressed: _handleEdit),
-            ProfileCloseButton(value: 'Cancel', onPressed: _dismiss)
-          ],
+        return Container(
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: width,
+                    child: ButtonAcceptEdit(onPressed: _handleEdit),
+                  ),
+                  
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: width,
+                    child: ProfileCloseButton(value: 'Cancel', onPressed: _dismiss),
+                  ),
+                  
+                ],
+              ),
+            ],
+          ),
         );
         break;
 
@@ -162,9 +205,8 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   void _handleEdit() {
-    /*print('name: ' + nameController.text);
+    print('name: ' + nameController.text);
     print('city: ' + cityController.text);
-    print('About Me: ' + aboutMeController.text);*/
     print('handle edit');
   }
 }
