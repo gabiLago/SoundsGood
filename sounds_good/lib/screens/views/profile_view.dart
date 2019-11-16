@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sounds_good/core/viewmodels/profile_model.dart';
 import 'package:sounds_good/screens/views/base_view.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_bottom_buttons_section.dart';
 
 import 'package:sounds_good/screens/widgets/profile/shared/profile_modes.dart';
-import 'package:sounds_good/screens/widgets/profile/edit/edit_profile_what.dart';
-import 'package:sounds_good/screens/widgets/profile/shared/profile_image.dart';
-import 'package:sounds_good/screens/widgets/profile/edit/profile_image.dart';
-import 'package:sounds_good/screens/widgets/profile/profile_title.dart';
-import 'package:sounds_good/screens/widgets/profile/profile_what.dart';
-import 'package:sounds_good/screens/widgets/profile/profile_videos.dart';
-import 'package:sounds_good/screens/widgets/profile/profile_about_me.dart';
-import 'package:sounds_good/screens/widgets/profile/profile_close_button.dart';
-import 'package:sounds_good/screens/widgets/profile/shared/header_button.dart';
-import 'package:sounds_good/screens/widgets/profile/own/header.dart';
-import 'package:sounds_good/screens/widgets/profile/edit/header.dart';
-import 'package:sounds_good/screens/widgets/profile/edit/how_to_reach_me.dart';
-import 'package:sounds_good/screens/widgets/profile/edit/button_accept_edit.dart';
+
+import 'package:sounds_good/screens/widgets/profile/profile_data_section.dart';
+import 'package:sounds_good/screens/widgets/profile/instruments_section.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_videos_section.dart';
+import 'package:sounds_good/screens/widgets/profile/profile_description_section.dart';
 
 import 'dart:io';
 
@@ -25,7 +18,7 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  profileMode _mode = profileMode.own;
+  ProfileMode mode = ProfileMode.own;
   File _pickedImage;
 
   final TextEditingController nameController =
@@ -33,174 +26,20 @@ class _ProfileViewState extends State<ProfileView> {
   final TextEditingController cityController =
       TextEditingController(text: "Barcelona");
 
-  @override
-  Widget build(BuildContext context) {
-    return BaseView<ProfileModel>(
-      onModelReady: (model) {
-        model.getProfile();
-      },
-      builder: (context, model, child) => Scaffold(
-        body: SafeArea(
-          child: ListView(
-            padding: const EdgeInsets.all(24),
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  _headerButtonSwitcher(),
-                  _headerSwitcher(
-                      model.profile.name, model.profile.friendlyLocation)
-                ],
-              ),
-              _profileImageSwitcher(),
-              _profileEditHowReachMe(),
-              ProfileTitle('What can I play'),
-              _profileInstrumentsListSwitcher(),
-              ProfileTitle('How do I play?'),
-              ProfileVideos(),
-              ProfileTitle('About Me'),
-              ProfileAboutMe(),
-              _profileBottomButtons(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _headerButtonSwitcher() {
-    switch (_mode) {
-      case profileMode.edit:
-        return Container();
-        break;
-
-      case profileMode.own:
-        return ProfileHeaderButton(
-          onPressed: _edit,
-          icon: Icon(Icons.edit,
-              color: Colors.black, semanticLabel: 'Edit Profile'),
-        );
-        break;
-
-      case profileMode.user:
-        return ProfileHeaderButton(
-          onPressed: _dismiss,
-          icon: Icon(Icons.close,
-              color: Colors.black, semanticLabel: 'Close Screen'),
-        );
-        break;
-    }
-  }
-
-  Widget _headerSwitcher(name, city) {
-    switch (_mode) {
-      case profileMode.edit:
-        return EditProfileHeader(
-            nameController: nameController, cityController: cityController);
-        break;
-
-      default:
-        return UserProfileHeader(name: name, city: city);
-        break;
-    }
-  }
-
-  Widget _profileImageSwitcher() {
-    switch (_mode) {
-      case profileMode.edit:
-        return EditProfileImage(_pickedImage);
-        break;
-
-      default:
-        return ProfileImage();
-        break;
-    }
-  }
-
-  Widget _profileEditHowReachMe(){
-            switch (_mode) {
-      case profileMode.edit:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ProfileTitle('How to Reach Me'),
-            ReachMeSelector(),
-          ]
-        );
-        
-        break;
-
-      default:
-        return Container();
-        break;
-    }
-            
-
-  }
-  Widget _profileInstrumentsListSwitcher() {
-    switch (_mode) {
-      case profileMode.edit:
-        return EditProfileWhat();
-        break;
-
-      default:
-        return ProfileWhat();
-        break;
-    }
-  }
-
-  Widget _profileBottomButtons() {
-    double width = MediaQuery.of(context).size.width - 50.0;
-
-    switch (_mode) {
-      case profileMode.edit:
-        return Container(
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  SizedBox(
-                    width: width,
-                    child: ButtonAcceptEdit(onPressed: _handleEdit),
-                  ),
-                  
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  SizedBox(
-                    width: width,
-                    child: ProfileCloseButton(value: 'Cancel', onPressed: _dismiss),
-                  ),
-                  
-                ],
-              ),
-            ],
-          ),
-        );
-        break;
-
-      case profileMode.own:
-        return ProfileCloseButton(value: 'Close Session', onPressed: _dismiss);
-        break;
-
-      case profileMode.user:
-        return ProfileCloseButton(value: 'Close Session', onPressed: _dismiss);
-        break;
-    }
-  }
+  final String name = "Eric";
+  final String city = "barcelona";
 
   void _edit() {
     setState(() {
       print('Edit tapped');
-      _mode = profileMode.edit;
+      mode = ProfileMode.edit;
     });
   }
 
   void _dismiss() {
     setState(() {
       print('Edit tapped');
-      _mode = profileMode.own;
+      mode = ProfileMode.own;
     });
   }
 
@@ -208,5 +47,57 @@ class _ProfileViewState extends State<ProfileView> {
     print('name: ' + nameController.text);
     print('city: ' + cityController.text);
     print('handle edit');
+  }
+
+  Future<bool> _captureAndroidBackButton() {
+    if (mode == ProfileMode.edit) {
+      setState(() {
+        print('Back Button');
+        mode = ProfileMode.own;
+      });
+    }
+    return Future(() => false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BaseView<ProfileModel>(
+      onModelReady: (model) {
+        model.getProfile();
+      },
+      builder: (context, model, child) => WillPopScope(
+        //WillPopScope allows caputuring Android BackButton
+        child: Scaffold(
+          body: SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.all(24),
+              children: <Widget>[
+                ProfileDataSection(
+                    profileMode: mode,
+                    name: name,
+                    city: city,
+                    edit: _edit,
+                    dismiss: _dismiss,
+                    nameController: nameController,
+                    cityController: cityController,
+                    image: _pickedImage),
+                InstrumentsSection(
+                  profileMode: mode,
+                  instrumentsList: [],
+                ),
+                ProfileVideosSection(profileMode: mode),
+                ProfileDescriptionSection(profileMode: mode),
+                ProfileBottomButtonsSection(
+                  profileMode: mode,
+                  handleEdit: _handleEdit,
+                  dismiss: _dismiss,
+                ),
+              ],
+            ),
+          ),
+        ),
+        onWillPop: _captureAndroidBackButton,
+      ),
+    );
   }
 }

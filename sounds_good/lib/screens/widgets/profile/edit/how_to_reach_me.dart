@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ReachMeSelector extends StatefulWidget {
+class HowToReachMeSelector extends StatefulWidget {
   @override
-  _ReachMeSelectorState createState() => _ReachMeSelectorState();
+  _HowToReachMeSelectorState createState() => _HowToReachMeSelectorState();
 }
 
-class _ReachMeSelectorState extends State<ReachMeSelector> {
+class _HowToReachMeSelectorState extends State<HowToReachMeSelector> {
   final Map<int, Widget> logoWidgets = const <int, Widget>{
     0: Text('Mail'),
     1: Text('WhatsApp'),

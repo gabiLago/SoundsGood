@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sounds_good/screens/widgets/instruments/instrument.dart';
+import 'package:sounds_good/screens/widgets/profile/shared/instrument.dart';
 
 class InstrumentItem extends StatelessWidget {
   final Instrument instrument;

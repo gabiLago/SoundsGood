@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sounds_good/screens/widgets/instruments/instrument.dart';
-import 'package:sounds_good/screens/widgets/instruments/instrument_item_edit.dart';
+import 'package:sounds_good/screens/widgets/profile/shared/instrument.dart';
+import 'package:sounds_good/screens/widgets/profile/edit/instrument_item.dart';
 
 class EditInstrumentsList extends StatefulWidget {
   EditInstrumentsList({Key key, this.instruments}) : super(key: key);

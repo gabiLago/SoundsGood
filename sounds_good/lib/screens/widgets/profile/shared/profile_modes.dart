@@ -1,1 +1,1 @@
-enum profileMode { edit, own, user }
+enum ProfileMode { edit, own, user }

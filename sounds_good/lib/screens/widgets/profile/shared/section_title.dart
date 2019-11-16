@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 
-class ProfileTitle extends StatelessWidget {
-  ProfileTitle(this.txt):super();
-  final String txt;
+class ProfileSectionTitle extends StatelessWidget {
+  ProfileSectionTitle({this.sectionTitle}):super();
+  final String sectionTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class ProfileTitle extends StatelessWidget {
         padding: const EdgeInsets.only(top: 20.0),
         child: Row(
           children: <Widget>[
-            Text(txt,
+            Text(sectionTitle,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
