@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sounds_good/core/viewmodels/profile_model.dart';
-import 'package:sounds_good/screens/widgets/profile/edit/header.dart';
 
 class EditProfileHeader extends StatelessWidget {
   final TextEditingController nameController;
@@ -14,7 +12,7 @@ class EditProfileHeader extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            flex: 9, // 90%
+            flex: 9,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -47,8 +45,6 @@ class NameTextField extends StatelessWidget {
           ),
           maxLines: 1,
           decoration: InputDecoration.collapsed(
-            //isDense: true,
-            //contentPadding: EdgeInsets.all(0.0),
             hintText: hintText,
           ),
           controller: controller,
@@ -71,8 +67,6 @@ class CityTextField extends StatelessWidget {
         fontWeight: FontWeight.w400,
       ),
       decoration: InputDecoration.collapsed(
-        //isDense: true,
-        //contentPadding: EdgeInsets.all(0.0),
         hintText: hintText,
         hintStyle: TextStyle(
           fontSize: 24,
@@ -85,29 +79,3 @@ class CityTextField extends StatelessWidget {
     );
   }
 }
-/*
-
-class EditProfileHeader extends StatelessWidget {
-  final String name;
-  final String city;
-
-  EditProfileHeader({this.name, this.city});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Center(
-          child: Text('Edit'),
-        ),
-        Center(
-          child: Text(name),
-        ),
-        Center(
-          child: Text(name),
-        ),
-      ],
-    );
-  }
-}
-*/

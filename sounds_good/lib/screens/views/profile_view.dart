@@ -19,44 +19,44 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
   ProfileMode mode = ProfileMode.own;
+
+  // TODO This should have been injected by data from model.profile
+  final TextEditingController nameController =
+      TextEditingController(text: 'Eric');
+  final TextEditingController cityController =
+      TextEditingController(text: 'Barcelona');
+  final TextEditingController descriptionController = TextEditingController(
+      text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in gravida neque. Curabitur id tristique nibh, vel elementum dolor. Donec eget varius quam, eget elementum orci. Praesent eget ultricies enim. Phasellus orci lorem, tincidunt eget porttitor quis, tincidunt ac metus. Aenean sed nulla magna. Etiam purus lorem, rhoncus a dolor vel, efficitur elementum neque. Sed finibus vel turpis a interdum. Quisque facilisis tincidunt mi, sit amet viverra nunc pharetra vitae. Proin enim odio, tempus id sapien ut, aliquam mattis nisi. Nullam id eros quis justo ultricies feugiat pretium eget lectus. Nullam elementum maximus tempus. In quis ipsum sodales, commodo dolor a, viverra tellus.');
   File _pickedImage;
 
-  final TextEditingController nameController =
-      TextEditingController(text: "Eric");
-  final TextEditingController cityController =
-      TextEditingController(text: "Barcelona");
-
-  final String name = "Eric";
-  final String city = "barcelona";
-
-  void _edit() {
+  void _switchToEditMode() {
     setState(() {
-      print('Edit tapped');
       mode = ProfileMode.edit;
     });
   }
 
   void _dismiss() {
     setState(() {
-      print('Edit tapped');
       mode = ProfileMode.own;
     });
   }
 
   void _handleEdit() {
+    print('Handling data from edit screen:');
     print('name: ' + nameController.text);
     print('city: ' + cityController.text);
-    print('handle edit');
   }
 
   Future<bool> _captureAndroidBackButton() {
     if (mode == ProfileMode.edit) {
       setState(() {
-        print('Back Button');
         mode = ProfileMode.own;
       });
+      return Future(() => false);
+    } else {
+      return Future(() => true);
     }
-    return Future(() => false);
   }
 
   @override
@@ -66,7 +66,6 @@ class _ProfileViewState extends State<ProfileView> {
         model.getProfile();
       },
       builder: (context, model, child) => WillPopScope(
-        //WillPopScope allows caputuring Android BackButton
         child: Scaffold(
           body: SafeArea(
             child: ListView(
@@ -74,9 +73,9 @@ class _ProfileViewState extends State<ProfileView> {
               children: <Widget>[
                 ProfileDataSection(
                     profileMode: mode,
-                    name: name,
-                    city: city,
-                    edit: _edit,
+                    name: nameController.text,
+                    city: cityController.text,
+                    edit: _switchToEditMode,
                     dismiss: _dismiss,
                     nameController: nameController,
                     cityController: cityController,
@@ -86,7 +85,11 @@ class _ProfileViewState extends State<ProfileView> {
                   instrumentsList: [],
                 ),
                 ProfileVideosSection(profileMode: mode),
-                ProfileDescriptionSection(profileMode: mode),
+                ProfileDescriptionSection(
+                  profileMode: mode,
+                  descriptionText: descriptionController.text,
+                  controller: descriptionController,
+                ),
                 ProfileBottomButtonsSection(
                   profileMode: mode,
                   handleEdit: _handleEdit,

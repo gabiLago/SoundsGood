@@ -4,8 +4,11 @@ import 'package:sounds_good/screens/widgets/profile/shared/section_title.dart';
 
 class ProfileDescriptionSection extends StatelessWidget {
   final ProfileMode profileMode;
+  final String descriptionText;
+  final TextEditingController controller;
 
-  ProfileDescriptionSection({this.profileMode});
+  ProfileDescriptionSection(
+      {this.profileMode, this.descriptionText, this.controller});
 
   // TODO Edit mode for About Me
 
@@ -18,11 +21,37 @@ class ProfileDescriptionSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ProfileSectionTitle(sectionTitle: 'About me'),
-            Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in gravida neque. Curabitur id tristique nibh, vel elementum dolor. Donec eget varius quam, eget elementum orci. Praesent eget ultricies enim. Phasellus orci lorem, tincidunt eget porttitor quis, tincidunt ac metus. Aenean sed nulla magna. Etiam purus lorem, rhoncus a dolor vel, efficitur elementum neque. Sed finibus vel turpis a interdum. Quisque facilisis tincidunt mi, sit amet viverra nunc pharetra vitae. Proin enim odio, tempus id sapien ut, aliquam mattis nisi. Nullam id eros quis justo ultricies feugiat pretium eget lectus. Nullam elementum maximus tempus. In quis ipsum sodales, commodo dolor a, viverra tellus.')
+            _modeSwitchHelper(),
           ],
         ),
       ),
     ]);
   }
+
+  Widget _modeSwitchHelper() {
+    switch (profileMode) {
+      case ProfileMode.edit:
+        return _editModeWidget();
+        break;
+
+      default:
+        return _plainWidget();
+        break;
+    }
+  }
+
+  Widget _editModeWidget() {
+    return TextField(
+      maxLines: null,
+      decoration: InputDecoration.collapsed(
+        hintText: descriptionText,
+      ),
+      controller: controller,
+    );
+  }
+
+  Widget _plainWidget() {
+    return Text(descriptionText);
+  }
+
 }
