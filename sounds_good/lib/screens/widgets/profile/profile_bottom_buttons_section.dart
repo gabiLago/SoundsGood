@@ -4,7 +4,6 @@ import 'package:sounds_good/core/viewmodels/profile_model.dart';
 import 'package:sounds_good/screens/widgets/profile/shared/profile_close_button.dart';
 import 'package:sounds_good/screens/widgets/profile/shared/profile_modes.dart';
 
-import 'edit/button_accept_edit.dart';
 
 class ProfileBottomButtonsSection extends StatefulWidget {
   final ProfileMode profileMode;
