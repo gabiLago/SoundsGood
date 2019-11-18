@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:sounds_good/screens/widgets/profile/shared/instrument.dart';
 
 class InstrumentItem extends StatelessWidget {
-  final Instrument instrument;
+  final String instrument;
 
   InstrumentItem({this.instrument});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      
-      child: Stack(
-        children: [
-          _pill(instrument.name, context),
-          
-        ],
-      ),
+    return Stack(
+      children: [
+        _pill(instrument, context),
+      ],
     );
   }
 

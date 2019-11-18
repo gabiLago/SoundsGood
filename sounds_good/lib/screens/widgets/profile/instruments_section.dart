@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sounds_good/screens/widgets/profile/edit/instruments_list.dart';
 import 'package:sounds_good/screens/widgets/profile/shared/profile_modes.dart';
-import 'package:sounds_good/screens/widgets/profile/shared/instrument.dart';
 import 'package:sounds_good/screens/widgets/profile/shared/section_title.dart';
 import 'package:sounds_good/screens/widgets/profile/shared/instruments_list.dart';
+
+typedef ListCallback(Set<String> instrumentsSet);
 
 class InstrumentsSection extends StatelessWidget {
   final ProfileMode profileMode;
   final List<String> instrumentsList;
+  final ListCallback editCallback;
 
-  final List<Instrument> instruments = [
-    Instrument(name: 'Zambomba'),
-    Instrument(name: 'Banjo'),
-    Instrument(name: 'Xilofón')
-  ];
-
-  InstrumentsSection({this.profileMode, this.instrumentsList});
+  InstrumentsSection({this.profileMode, this.instrumentsList, this.editCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +39,11 @@ class InstrumentsSection extends StatelessWidget {
 
   Widget _editModeWidgetsList() {
     return EditInstrumentsList(
-      instruments: instruments,
+      instruments: instrumentsList,
     );
   }
 
   Widget _plainWidgetsList() {
-    return InstrumentsList(
-      instruments: instruments,
-    );
+    return InstrumentsList();
   }
 }

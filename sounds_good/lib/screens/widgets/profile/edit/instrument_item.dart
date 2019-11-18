@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sounds_good/screens/widgets/profile/shared/instrument.dart';
+
+typedef void InstrumentsListCallback(String instrument, bool isSelected);
 
 class EditInstrumentItem extends StatelessWidget {
-  final Instrument instrument;
+  final String instrument;
   final bool isSelected;
   final InstrumentsListCallback onListChanged;
 
-  EditInstrumentItem({Instrument instrument, this.isSelected, this.onListChanged})
+  EditInstrumentItem({String instrument, this.isSelected, this.onListChanged})
       : instrument = instrument,
         super(key: ObjectKey(instrument));
 
@@ -18,7 +19,7 @@ class EditInstrumentItem extends StatelessWidget {
       },
       child: Stack(
         children: [
-          _pill(instrument.name, context),
+          _pill(instrument, context),
           Positioned(
             top: 0,
             right: 0,

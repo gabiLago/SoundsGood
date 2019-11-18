@@ -50,11 +50,12 @@ class Api {
       "Authorization": token
     };
 
-    final response = await client.patch('$endpoint/profile', headers: headers);
+    final response = await client.patch('$endpoint/profile', headers: headers);    
 
     switch (response.statusCode) {
       case 200:
         var json = jsonDecode(response.body);
+       
         print(json);
 
         return Profile.fromJson(json);
