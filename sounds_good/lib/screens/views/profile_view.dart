@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sounds_good/core/viewmodels/base_model.dart';
 import 'package:sounds_good/core/viewmodels/profile_model.dart';
 import 'package:sounds_good/screens/views/base_view.dart';
 import 'package:sounds_good/screens/widgets/profile/profile_bottom_buttons_section.dart';
@@ -29,7 +30,7 @@ class _ProfileViewState extends State<ProfileView> {
       text:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in gravida neque. Curabitur id tristique nibh, vel elementum dolor. Donec eget varius quam, eget elementum orci. Praesent eget ultricies enim. Phasellus orci lorem, tincidunt eget porttitor quis, tincidunt ac metus. Aenean sed nulla magna. Etiam purus lorem, rhoncus a dolor vel, efficitur elementum neque. Sed finibus vel turpis a interdum. Quisque facilisis tincidunt mi, sit amet viverra nunc pharetra vitae. Proin enim odio, tempus id sapien ut, aliquam mattis nisi. Nullam id eros quis justo ultricies feugiat pretium eget lectus. Nullam elementum maximus tempus. In quis ipsum sodales, commodo dolor a, viverra tellus.');
   File _pickedImage;
-  
+
   void _switchToEditMode() {
     setState(() {
       mode = ProfileMode.edit;
@@ -59,7 +60,6 @@ class _ProfileViewState extends State<ProfileView> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return BaseView<ProfileModel>(
@@ -68,33 +68,37 @@ class _ProfileViewState extends State<ProfileView> {
       },
       builder: (context, model, child) => WillPopScope(
         child: Scaffold(
-          body: SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(24),
-              children: <Widget>[
-                ProfileDataSection(
-                    profileMode: mode,
-                    name: nameController.text,
-                    city: cityController.text,
-                    edit: _switchToEditMode,
-                    dismiss: _dismiss,
-                    nameController: nameController,
-                    cityController: cityController,
-                    image: _pickedImage),
-                InstrumentsSection(profileMode: mode),
-                ProfileVideosSection(profileMode: mode),
-                ProfileDescriptionSection(
-                  profileMode: mode,
-                  descriptionText: descriptionController.text,
-                  controller: descriptionController,
+          body: model.state == ViewState.Idle
+              ? SafeArea(
+                  child: ListView(
+                    padding: const EdgeInsets.all(24),
+                    children: <Widget>[
+                      ProfileDataSection(
+                          profileMode: mode,
+                          name: nameController.text,
+                          city: cityController.text,
+                          edit: _switchToEditMode,
+                          dismiss: _dismiss,
+                          nameController: nameController,
+                          cityController: cityController,
+                          image: _pickedImage),
+                      InstrumentsSection(profileMode: mode),
+                      ProfileVideosSection(profileMode: mode),
+                      ProfileDescriptionSection(
+                        profileMode: mode,
+                        descriptionText: descriptionController.text,
+                        controller: descriptionController,
+                      ),
+                      ProfileBottomButtonsSection(
+                        profileMode: mode,
+                        dismiss: _dismiss,
+                      ),
+                    ],
+                  ),
+                )
+              : Center(
+                  child: CircularProgressIndicator(),
                 ),
-                ProfileBottomButtonsSection(
-                  profileMode: mode,
-                  dismiss: _dismiss,
-                ),
-              ],
-            ),
-          ),
         ),
         onWillPop: _captureAndroidBackButton,
       ),
